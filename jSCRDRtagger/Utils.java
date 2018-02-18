@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,13 +36,24 @@ public class Utils
 		return wordTagList;
 	}
 
-	public static HashMap<String, String> getDictionary(String dictPath)
+	public static HashMap<String, String> getDictionary(String dictPath) throws IOException
+	{
+		try {
+			return getDictionary(new FileInputStream(new File(dictPath)));
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new HashMap<String, String>();
+	}
+
+	public static HashMap<String, String> getDictionary(InputStream dictInputStream)
 	{
 		HashMap<String, String> dict = new HashMap<String, String>();
 		BufferedReader buffer;
 		try {
-			buffer = new BufferedReader(new InputStreamReader(
-				new FileInputStream(new File(dictPath)), "UTF-8"));
+			buffer = new BufferedReader(new InputStreamReader(dictInputStream, "UTF-8"));
 			for (String line; (line = buffer.readLine()) != null;) {
 				String[] wordTag = line.split(" ");
 				dict.put(wordTag[0], wordTag[1]);
