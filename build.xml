@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jSCRDRtagger" default="all" basedir=".">
+
+    <!-- Sets variables which can later be used. -->
+    <!-- The value of a property is accessed via ${} -->
+    <property file="build.properties"/>
+    <property name="src.dir" location="jSCRDRtagger"/>
+    <property name="build.dir" location="bin"/>
+
+    <!-- Deletes the existing build directory -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <!-- Creates the  build  directory -->
+    <target name="makedir">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.dir}/classes"/>
+    </target>
+
+    <!-- Compiles the java code using Oracle's compiler -->
+    <target name="compile" depends="clean, makedir">
+        <javac srcdir="${src.dir}"
+               destdir="${build.dir}/classes"
+               classpath="${src.dir}"/>
+    </target>
+
+    <!-- Build the final JAR -->
+    <target name="build" depends="compile">
+        <jar destfile="${build.dir}/jSCRDRtagger.jar"
+             basedir="${build.dir}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="jSCRDRtagger.RDRPOSTagger"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- Clean and rebuild all -->
+    <target name="all" depends="build">
+        <description>Rebuild All</description>
+    </target>
+</project>
