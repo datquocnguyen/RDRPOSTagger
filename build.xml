@@ -22,7 +22,8 @@
     <target name="compile" depends="clean, makedir">
         <javac srcdir="${src.dir}"
                destdir="${build.dir}/classes"
-               classpath="${src.dir}"/>
+               classpath="${src.dir}"
+               includeantruntime="false"/>
     </target>
 
     <!-- Build the final JAR -->
