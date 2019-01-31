@@ -1,5 +1,7 @@
 ## RDRPOSTagger ##
 
+![enrdr3](https://user-images.githubusercontent.com/2412555/48744741-94d82480-ecbc-11e8-89dc-200ea85c96e4.png)
+
 **RDRPOSTagger** is a robust, easy-to-use and language-independent toolkit for POS and morphological tagging. It employs an error-driven approach to automatically construct tagging rules in the form of a binary tree. The main properties of RDRPOSTagger are as follows:
 
 - RDRPOSTagger obtains very fast tagging speed and achieves a competitive accuracy in comparison to the state-of-the-art results. See experimental results including performance speed and tagging accuracy for 13 languages in our *AI Communications* article.
@@ -20,4 +22,4 @@ The general architecture and experimental results of RDRPOSTagger can be found i
 
 **Find more information about RDRPOSTagger at its website:** [http://rdrpostagger.sourceforge.net/](http://rdrpostagger.sourceforge.net/)
 
-In addition, you might also find my new toolkit [jPTDP](https://github.com/datquocnguyen/jPTDP) interesting: [jPTDP - A Novel Neural Network Model for Joint POS Tagging and Dependency Parsing](https://github.com/datquocnguyen/jPTDP). jPTDP also provides pre-trained models for 40+ languages from UD v2.0.
+In addition, you might want to try my new toolkit [jPTDP](https://github.com/datquocnguyen/jPTDP) for joint POS tagging and dependency parsing. jPTDP also provides pre-trained models for 40+ languages from UD treebanks.

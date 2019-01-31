@@ -28,7 +28,16 @@ public class InitialTagger
 
 		for (String word : sentence.split("\\s+")) {
 			if (QUOTATION.matcher(word).find()) {
-				wordtags.add(new WordTag("''", DICT.get("''")));
+				// wordtags.add(new WordTag("''", DICT.get("''")));
+				if (DICT.containsKey("''")) { 
+					wordtags.add(new WordTag("''", DICT.get("''")));
+				}
+				else if (DICT.containsKey(".")) { 
+					wordtags.add(new WordTag("''", DICT.get(".")));
+				} else {
+					System.out.println("'' is not in the dictionary \nManually add '' with a possible POS tag into the .DICT file!");
+					return null;
+				}
 				continue;
 			}
 
