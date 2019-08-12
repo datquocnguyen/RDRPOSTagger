@@ -1,3 +1,5 @@
+package jSCRDRtagger;
+
 /**
  * @author DatQuocNguyen
  * 
