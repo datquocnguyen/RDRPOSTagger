@@ -8,7 +8,7 @@
 
 - RDRPOSTagger now supports pre-trained UPOS, XPOS and morphological tagging models for about 80 languages. See folder `Models` for more details.
 
-- See [fullusage.md](fullusage.md) for full details on how to train and use the tagger.
+- See [USAGE.md](USAGE.md) for full details on how to train and use the tagger.
 
 The general architecture and experimental results of RDRPOSTagger can be found in our following papers:
 

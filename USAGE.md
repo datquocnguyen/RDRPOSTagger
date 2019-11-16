@@ -260,3 +260,5 @@ Assume that Python 3.4+ is already set to run in command line or terminal (e.g. 
 
 ----
 Last updated: June 22, 2019
+
+*This Markdown version is converted from original document in [FullUsage.html](FullUsage.html)*
