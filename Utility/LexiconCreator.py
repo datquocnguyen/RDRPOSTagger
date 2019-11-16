@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import re
 import sys
 
 os.chdir("../")
@@ -8,7 +9,6 @@ sys.setrecursionlimit(100000)
 sys.path.append(os.path.abspath(""))
 os.chdir("./Utility")
 
-import re
 from Utility.Utils import getWordTag
 
 
@@ -138,27 +138,25 @@ def createLexicon(corpusFilePath, fullLexicon):
     fileSuffix = ".sDict"
     if fullLexicon == "full":
         fileSuffix = ".DICT"
-    fileOut = open(corpusFilePath + fileSuffix, "w")
 
-    fileOut.write("TAG4UNKN-WORD " + tag4UnknWord + "\n")
-    fileOut.write("TAG4UNKN-CAPITAL " + tag4UnknCapitalizedWord + "\n")
-    fileOut.write("TAG4UNKN-NUM " + tag4UnknNum + "\n")
-    for key in dictionary:
-        fileOut.write(key + " " + dictionary[key] + "\n")
+    with open(corpusFilePath + fileSuffix, "w") as fileOut:
+        fileOut.write("TAG4UNKN-WORD " + tag4UnknWord + "\n")
+        fileOut.write("TAG4UNKN-CAPITAL " + tag4UnknCapitalizedWord + "\n")
+        fileOut.write("TAG4UNKN-NUM " + tag4UnknNum + "\n")
+        for key in dictionary:
+            fileOut.write(key + " " + dictionary[key] + "\n")
 
-    for suffix in suffixDictCounter:
-        tagFreq4Suffix = suffixDictCounter[suffix]
-        pairs = list(tagFreq4Suffix.items())
-        pairs.sort(key=itemgetter(1), reverse=True)
-        tag = pairs[0][0]
-        freq = pairs[0][1]
-        if len(suffix) == 7 and freq >= 2:
-            fileOut.write(suffix + " " + tag + "\n")
-        if len(suffix) == 6 and freq >= 3:
-            fileOut.write(suffix + " " + tag + "\n")
-        if len(suffix) == 5 and freq >= 4:
-            fileOut.write(suffix + " " + tag + "\n")
-        if len(suffix) == 4 and freq >= 5:
-            fileOut.write(suffix + " " + tag + "\n")
-
-    fileOut.close()
+        for suffix in suffixDictCounter:
+            tagFreq4Suffix = suffixDictCounter[suffix]
+            pairs = list(tagFreq4Suffix.items())
+            pairs.sort(key=itemgetter(1), reverse=True)
+            tag = pairs[0][0]
+            freq = pairs[0][1]
+            if len(suffix) == 7 and freq >= 2:
+                fileOut.write(suffix + " " + tag + "\n")
+            if len(suffix) == 6 and freq >= 3:
+                fileOut.write(suffix + " " + tag + "\n")
+            if len(suffix) == 5 and freq >= 4:
+                fileOut.write(suffix + " " + tag + "\n")
+            if len(suffix) == 4 and freq >= 5:
+                fileOut.write(suffix + " " + tag + "\n")

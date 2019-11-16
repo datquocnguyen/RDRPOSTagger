@@ -63,7 +63,7 @@ def initializeSentence(FREQDICT, sentence):
 
 def initializeCorpus(FREQDICT, inputFile, outputFile):
     lines = open(inputFile, "r").readlines()
-    fileOut = open(outputFile, "w")
-    for line in lines:
-        fileOut.write(initializeSentence(FREQDICT, line) + "\n")
-    fileOut.close()
+
+    with open(outputFile, "w") as fileOut:
+        for line in lines:
+            fileOut.write(initializeSentence(FREQDICT, line) + "\n")

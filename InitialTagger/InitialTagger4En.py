@@ -66,7 +66,7 @@ def initializeEnSentence(FREQDICT, sentence):
 
 def initializeEnCorpus(FREQDICT, inputFile, outputFile):
     lines = open(inputFile, "r").readlines()
-    fileOut = open(outputFile, "w")
-    for line in lines:
-        fileOut.write(initializeEnSentence(FREQDICT, line) + "\n")
-    fileOut.close()
+
+    with open(outputFile, "w") as fileOut:
+        for line in lines:
+            fileOut.write(initializeEnSentence(FREQDICT, line) + "\n")

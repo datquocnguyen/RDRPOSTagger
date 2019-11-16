@@ -21,24 +21,21 @@ class SCRDRTree:
         self.root.check(object)
 
     def writeToFileWithSeenCases(self, outFile):
-        out = open(outFile, "w")
-        self.root.writeToFileWithSeenCases(out, 0)
-        out.close()
+        with open(outFile, "w") as out:
+            self.root.writeToFileWithSeenCases(out, 0)
 
     def writeToFile(self, outFile):
-        out = open(outFile, "w")
-        self.root.writeToFile(out, 0)
-        out.close()
+        with open(outFile, "w") as out:
+            self.root.writeToFile(out, 0)
 
     # Build tree from file containing rules using FWObject
     def constructSCRDRtreeFromRDRfile(self, rulesFilePath):
-
         self.root = Node(FWObject(False), "NN", None, None, None, [], 0)
         currentNode = self.root
         currentDepth = 0
 
-        rulesFile = open(rulesFilePath, "r")
-        lines = rulesFile.readlines()
+        with open(rulesFilePath, "r") as rulesFile:
+            lines = rulesFile.readlines()
 
         for i in range(1, len(lines)):
             line = lines[i]
