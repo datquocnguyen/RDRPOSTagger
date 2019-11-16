@@ -1,5 +1,9 @@
 # RDRPOSTagger
-A Rule-based Part-of-Speech and Morphological Tagging Toolkit
+
+[![Python 3.4](https://img.shields.io/badge/python-3.4-blue.svg)](https://www.python.org/downloads/release/python-360/) 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
+
+A Rule-based Part-of-Speech and Morphological Tagging Toolkit<br>
 https://github.com/datquocnguyen/RDRPOSTagger
 
 1. [Introduction](#1-introduction)
