@@ -24,7 +24,7 @@ https://github.com/datquocnguyen/RDRPOSTagger
 
 RDRPOSTagger is a robust and easy-to-use toolkit for POS and morphological tagging. It employs an error-driven methodology to automatically construct tagging rules in the form of a binary tree.
 
-- RDRPOSTagger obtains fast training & tagging speed. For example, on the English Penn WSJ sections 22-24, it achieves tagging speeds of **8K** and **90K words/second** computed for <u>single</u> threaded implementations in **Python** and **Java**, respectively (a computer with Core2Duo 2.4GHz and 3GB of memory). See more results in our *AI Communications* article.
+- RDRPOSTagger obtains fast training & tagging speed. For example, on the English Penn WSJ sections 22-24, it achieves tagging speeds of **8K** and **90K words/second** computed for _single_ threaded implementations in **Python** and **Java**, respectively (a computer with Core2Duo 2.4GHz and 3GB of memory). See more results in our *AI Communications* article.
 
 - RDRPOSTagger obtains a competitive performance in comparison to the state-of-the-art results. It now supports pre-trained UPOS, XPOS and morphological tagging models for about 80 languages. See HERE for details.
 
@@ -34,12 +34,12 @@ The general architecture and experimental results of RDRPOSTagger can be found i
 
 - Dat Quoc Nguyen, Dai Quoc Nguyen, Dang Duc Pham and Son Bao Pham. [A Robust Transformation-Based Learning Approach Using Ripple Down Rules for Part-Of-Speech Tagging](http://content.iospress.com/articles/ai-communications/aic698). *AI Communications* (AICom), vol. 29, no. 3, pp. 409-422, 2016. [[.PDF](http://arxiv.org/pdf/1412.4021.pdf)] [[.bib](http://rdrpostagger.sourceforge.net/AICom.bib)]
 
-<u>**Please CITE**</u> either the EACL or the AICom paper whenever RDRPOSTagger is used to produce published results or incorporated into other software.
+_**Please CITE**_ either the EACL or the AICom paper whenever RDRPOSTagger is used to produce published results or incorporated into other software.
 
 
 ## 2. Train RDRPOSTagger on a gold standard training corpus
 
-<u>NOTICES:</u>
+_NOTICES:_
 
 - In terms of implementation, the training process has been implemented in Python while the tagging process has been implemented in both Python and Java. There is a multi-threaded mode with faster tagging speed for the Python implementation. See Section 5 for details of using the Java implementation.
 
@@ -55,7 +55,7 @@ Assume that Python 3.4+ is already set to run in command line or terminal (e.g. 
   pSCRDRtagger$ python RDRPOSTagger.py train PATH-TO-GOLD-STANDARD-TRAINING-CORPUS
   ```
 
-  <u>Example 1</u>:
+  _Example 1:_
   ```sh
   pSCRDRtagger$ python RDRPOSTagger.py train ../data/goldTrain
   ```
@@ -70,14 +70,14 @@ Assume that Python 3.4+ is already set to run in command line or terminal (e.g. 
   pSCRDRtagger$ python RDRPOSTagger.py tag PATH-TO-TRAINED-RDR-MODEL PATH-TO-LEXICON PATH-TO-RAW-TEXT-CORPUS
   ```
 
-  <u>Example 2</u>:
+  _Example 2:_
   ```sh
   pSCRDRtagger$ python RDRPOSTagger.py tag ../data/goldTrain.RDR ../data/goldTrain.DICT ../data/rawTest
   ```
 
   A `.TAGGED file`, in this case `rawTest.TAGGED`, will be generated in the same directory containing the raw text corpus.
 
-  <u>To obtain faster tagging process in Python</u>: set a higher value for variable `NUMBER_OF_PROCESSES` in module `Config.py` in package `Utility`.
+  _To obtain faster tagging process in Python:_ set a higher value for variable `NUMBER_OF_PROCESSES` in module `Config.py` in package `Utility`.
 
 - To evaluate tagging accuracy, we employ module `Eval.py` in package `Utility`:
 
@@ -85,7 +85,7 @@ Assume that Python 3.4+ is already set to run in command line or terminal (e.g. 
   Utility$ python Eval.py PATH-TO-TAGGED-TEST-CORPUS PATH-TO-GOLD-TEST-CORPUS
   ```
 
-  <u>Example 3</u>:
+  _Example 3:_
   ```sh
   Utility$ python Eval.py ../data/rawTest.TAGGED ../data/goldTest
   ```
@@ -127,12 +127,12 @@ Assume that Python 3.4+ is already set to run in command line or terminal (e.g. 
   pSCRDRtagger$ python RDRPOSTagger.py tag PATH-TO-PRETRAINED-RDR-MODEL PATH-TO-LEXICON PATH-TO-RAW-TEXT-CORPUS
   ```
 
-  <u>Example 4</u>:
+  _Example 4:_
   ```sh
   pSCRDRtagger$ python RDRPOSTagger.py tag ../Models/POS/German.RDR ../Models/POS/German.DICT ../data/GermanRawTest
   ```
 
-  <u>Example 5</u>:
+  _Example 5:_
   ```sh
   pSCRDRtagger$ python RDRPOSTagger.py tag ../Models/MORPH/German.RDR ../Models/MORPH/German.DICT ../data/GermanRawTest
   ```
@@ -165,7 +165,7 @@ Assume that Python 3.4+ is already set to run in command line or terminal (e.g. 
   pSCRDRtagger$ python ExtRDRPOSTagger.py train PATH-TO-GOLD-STANDARD-TRAINING-CORPUS PATH-TO-TRAINING-CORPUS-INITIALIZED-BY-EXTERNAL-TAGGER
   ```
 
-  <u>Example 6</u>:
+  _Example 6:_
   ```sh
   pSCRDRtagger$ python ExtRDRPOSTagger.py train ../data/goldTrain ../data/initTrain
   ```
@@ -180,7 +180,7 @@ Assume that Python 3.4+ is already set to run in command line or terminal (e.g. 
   pSCRDRtagger$ python ExtRDRPOSTagger.py tag PATH-TO-TRAINED-RDR-MODEL PATH-TO-TEST-CORPUS-INITIALIZED-BY-EXTERNAL-TAGGER
   ```
 
-  <u>Example 7</u>:
+  _Example 7:_
   ```sh
   pSCRDRtagger$ python ExtRDRPOSTagger.py tag ../data/initTrain.RDR ../data/initTest
   ```
@@ -195,24 +195,24 @@ Assume that Python 3.4+ is already set to run in command line or terminal (e.g. 
   jSCRDRTagger$ java RDRPOSTagger PATH-TO-PRETRAINED-RDR-MODEL PATH-TO-LEXICON PATH-TO-RAW-TEXT-CORPUS
   ```
 
-  <u>Example 8</u>:
+  _Example 8:_
   ```sh
   jSCRDRTagger$ java RDRPOSTagger ../Models/POS/German.RDR ../Models/POS/German.DICT ../data/GermanRawTest
   ```
 
-   <u>Example 9</u>:
+   _Example 9:_
    ```sh
    jSCRDRTagger$ java RDRPOSTagger ../Models/MORPH/German.RDR ../Models/MORPH/German.DICT ../data/GermanRawTest
    ```
 
   RDRPOSTagger has two additional parameters specialized for POS tagging in English and Vietnamese:
 
-  <u>Example 10</u>:
+  _Example 10:_
   ```sh
   jSCRDRTagger$ java RDRPOSTagger en ../Models/POS/English.RDR ../Models/POS/English.DICT ../data/en/rawTest
   ```
 
-  <u>Example 11</u>:
+  _Example 11:_
   ```sh
   jSCRDRTagger$ java RDRPOSTagger vn ../Models/POS/Vietnamese.RDR ../Models/POS/Vietnamese.DICT ../data/vn/rawTest
   ```
@@ -223,7 +223,7 @@ Assume that Python 3.4+ is already set to run in command line or terminal (e.g. 
   jSCRDRTagger$ java RDRPOSTagger ex PATH-TO-TRAINED-RDR-MODEL PATH-TO-TEST-CORPUS-INITIALIZED-BY-EXTERNAL-TAGGER
   ```
 
-  <u>Example 12</u>:
+  _Example 12:_
   ```sh
   jSCRDRTagger$ java RDRPOSTagger ex ../data/initTrain.RDR ../data/initTest
   ```
