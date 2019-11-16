@@ -8,6 +8,8 @@
 
 - RDRPOSTagger now supports pre-trained UPOS, XPOS and morphological tagging models for about 80 languages. See folder `Models` for more details.
 
+- See [fullusage.md](fullusage.md) for full details on how to train and use the tagger.
+
 The general architecture and experimental results of RDRPOSTagger can be found in our following papers:
 
 - Dat Quoc Nguyen, Dai Quoc Nguyen, Dang Duc Pham and Son Bao Pham. [RDRPOSTagger: A Ripple Down Rules-based Part-Of-Speech Tagger](http://www.aclweb.org/anthology/E14-2005). In *Proceedings of the Demonstrations at the 14th Conference of the European Chapter of the Association for Computational Linguistics*, EACL 2014, pp. 17-20, 2014. [[.PDF]](http://www.aclweb.org/anthology/E14-2005) [[.bib]](http://www.aclweb.org/anthology/E14-2005.bib)

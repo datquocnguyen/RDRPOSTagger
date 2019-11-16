@@ -2,10 +2,10 @@
 A Rule-based Part-of-Speech and Morphological Tagging Toolkit
 https://github.com/datquocnguyen/RDRPOSTagger
 
-1. [Introduction](#introduction)
-2. [Train RDRPOSTagger on a gold standard training corpus](#train-rdrpostagger-on-a-gold-standard-training-corpus)
-3. [Use pre-trained POS and morphological tagging models](#use-pre-trained-pos-and-morphological-tagging-models)
-4. [Combine RDRPOSTagger with an external initial tagger](#combine-rdrpostagger-with-an-external-initial-tagger)
+1. [Introduction](#1-introduction)
+2. [Train RDRPOSTagger on a gold standard training corpus](#2-train-rdrpostagger-on-a-gold-standard-training-corpus)
+3. [Use pre-trained POS and morphological tagging models](#3-use-pre-trained-pos-and-morphological-tagging-models)
+4. [Combine RDRPOSTagger with an external initial tagger](#4-combine-rdrpostagger-with-an-external-initial-tagger)
 5. [Speed up tagging process with an implementation in Java](#speed-up-tagging-process-with-an-implementation-in-java)
 - [References](#references)
 
