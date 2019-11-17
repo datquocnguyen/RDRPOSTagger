@@ -1,49 +1,47 @@
 # -*- coding: utf-8 -*-
 
-from .Node import Node 
-from .Object import FWObject 
+from .Node import Node
+from .Object import FWObject
+
 
 class SCRDRTree:
     """
     Single Classification Ripple Down Rules tree for Part-of-Speech and morphological tagging
     """
-    
-    def __init__(self, root = None):
+
+    def __init__(self, root=None):
         self.root = root
-                            
+
     def findDepthNode(self, node, depth):
         while node.depth != depth:
             node = node.father
-        return node                
-                
+        return node
+
     def classify(self, object):
         self.root.check(object)
-        
+
     def writeToFileWithSeenCases(self, outFile):
-        out = open(outFile, "w")
-        self.root.writeToFileWithSeenCases(out, 0)
-        out.close()
-    
+        with open(outFile, "w") as out:
+            self.root.writeToFileWithSeenCases(out, 0)
+
     def writeToFile(self, outFile):
-        out = open(outFile, "w")
-        self.root.writeToFile(out, 0)
-        out.close()
-    
-    #Build tree from file containing rules using FWObject
+        with open(outFile, "w") as out:
+            self.root.writeToFile(out, 0)
+
+    # Build tree from file containing rules using FWObject
     def constructSCRDRtreeFromRDRfile(self, rulesFilePath):
-        
         self.root = Node(FWObject(False), "NN", None, None, None, [], 0)
         currentNode = self.root
         currentDepth = 0
-        
-        rulesFile = open(rulesFilePath, "r")
-        lines = rulesFile.readlines()
-        
+
+        with open(rulesFilePath, "r") as rulesFile:
+            lines = rulesFile.readlines()
+
         for i in range(1, len(lines)):
             line = lines[i]
-            depth = 0           
+            depth = 0
             for c in line:
-                if c == '\t':
+                if c == "\t":
                     depth = depth + 1
                 else:
                     break
@@ -51,16 +49,16 @@ class SCRDRTree:
             line = line.strip()
             if len(line) == 0:
                 continue
-                
+
             temp = line.find("cc")
-            if temp == 0:   
+            if temp == 0:
                 continue
-            
+
             condition = getCondition(line.split(" : ", 1)[0].strip())
             conclusion = getConcreteValue(line.split(" : ", 1)[1].strip())
-            
+
             node = Node(condition, conclusion, None, None, None, [], depth)
-            
+
             if depth > currentDepth:
                 currentNode.exceptChild = node
             elif depth == currentDepth:
@@ -69,17 +67,17 @@ class SCRDRTree:
                 while currentNode.depth != depth:
                     currentNode = currentNode.father
                 currentNode.elseChild = node
-            
+
             node.father = currentNode
             currentNode = node
             currentDepth = depth
-    
+
     def findFiredNode(self, fwObject):
         currentNode = self.root
         firedNode = None
         obContext = fwObject.context
         while True:
-            #Check whether object satisfying the current node's condition
+            # Check whether object satisfying the current node's condition
             cnContext = currentNode.condition.context
             notNoneIds = currentNode.condition.notNoneIds
             satisfied = True
@@ -87,8 +85,8 @@ class SCRDRTree:
                 if cnContext[i] != obContext[i]:
                     satisfied = False
                     break
-                    
-            if(satisfied):
+
+            if satisfied:
                 firedNode = currentNode
                 exChild = currentNode.exceptChild
                 if exChild is None:
@@ -102,7 +100,8 @@ class SCRDRTree:
                 else:
                     currentNode = elChild
         return firedNode
-    
+
+
 #    def findFiredNodeInDepth(self, fwObject, depth):
 #        currentNode = self.root
 #        firedNode = None
@@ -121,7 +120,7 @@ class SCRDRTree:
 #            if currentNode.depth > depth:
 #                break
 #        return firedNode
-#    
+#
 #    #Count number of nodes in exception-structure levels
 #    def countNodes(self, inDepth):
 #        currentNode = self.root
@@ -132,14 +131,15 @@ class SCRDRTree:
 #            currentNode = nodeQueue[0]
 #            #Current node's depth is smaller than a given threshold
 #            if currentNode.depth <= inDepth:
-#                count += 1                    
+#                count += 1
 #            if currentNode.exceptChild is not None:
 #                nodeQueue.append(currentNode.exceptChild)
 #            if currentNode.elseChild is not None:
 #                nodeQueue.append(currentNode.elseChild)
-#            nodeQueue = nodeQueue[1:] 
+#            nodeQueue = nodeQueue[1:]
 #        return count
-                
+
+
 def getConcreteValue(str):
     if str.find('""') > 0:
         if str.find("Word") > 0:
@@ -148,16 +148,17 @@ def getConcreteValue(str):
             return "<SFX>"
         else:
             return "<T>"
-    return str[str.find("\"") + 1 : len(str) - 1]
-       
+    return str[str.find('"') + 1 : len(str) - 1]
+
+
 def getCondition(strCondition):
     condition = FWObject(False)
     for rule in strCondition.split(" and "):
         rule = rule.strip()
         key = rule[rule.find(".") + 1 : rule.find(" ")]
         value = getConcreteValue(rule)
-             
-        if key == "prevWord2": 
+
+        if key == "prevWord2":
             condition.context[0] = value
         elif key == "prevTag2":
             condition.context[1] = value
@@ -185,8 +186,9 @@ def getCondition(strCondition):
             condition.context[12] = value
     for i in range(13):
         if condition.context[i] is not None:
-            condition.notNoneIds.append(i)        
+            condition.notNoneIds.append(i)
     return condition
-    
+
+
 if __name__ == "__main__":
     pass
