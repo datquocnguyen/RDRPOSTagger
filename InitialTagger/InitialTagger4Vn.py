@@ -3,15 +3,6 @@
 import re
 
 
-def isAbbre(word):
-
-    # word = unicode(word, "utf-8")
-    for i in range(len(word)):
-        if isVnLowerChar(word[i]) or word[i] == "_":
-            return False
-    return True
-
-
 VNUPPERCHARS = [u"Ă", u"Â", u"Đ", u"Ê", u"Ô", u"Ơ", u"Ư"]
 VNLOWERCHARS = [u"ă", u"â", u"đ", u"ê", u"ô", u"ơ", u"ư"]
 
@@ -26,6 +17,14 @@ def isVnUpperChar(char):
     if char.isupper() or char in VNUPPERCHARS:
         return True
     return False
+
+
+def isAbbre(word):
+    # word = unicode(word, "utf-8")
+    for i in range(len(word)):
+        if isVnLowerChar(word[i]) or word[i] == "_":
+            return False
+    return True
 
 
 def isVnProperNoun(word):

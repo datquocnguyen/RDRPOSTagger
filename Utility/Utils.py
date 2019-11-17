@@ -13,9 +13,7 @@ def getWordTag(wordTag):
 
 
 def getRawText(inputFile, outFile):
-    with open(inputFile, "r") as f:
-        sents = f.readlines()
-
+    sents = open(inputFile, "r").readlines()
     with open(outFile, "w") as out:
         for sent in sents:
             wordTags = sent.strip().split()
@@ -27,8 +25,7 @@ def getRawText(inputFile, outFile):
 
 def readDictionary(inputFile):
     dictionary = {}
-    with open(inputFile, "r") as f:
-        lines = f.readlines()
+    lines = open(inputFile, "r").readlines()
     for line in lines:
         wordtag = line.strip().split()
         dictionary[wordtag[0]] = wordtag[1]

@@ -2,13 +2,13 @@
 
 import os
 import sys
+from multiprocessing import Pool
 
 os.chdir("../")
 sys.setrecursionlimit(100000)
 sys.path.append(os.path.abspath(""))
 os.chdir("./pSCRDRtagger")
 
-from multiprocessing import Pool
 from InitialTagger.InitialTagger4Vn import (
     initializeVnCorpus,
     initializeVnSentence,
@@ -17,8 +17,8 @@ from SCRDRlearner.Object import FWObject
 from SCRDRlearner.SCRDRTree import SCRDRTree
 from SCRDRlearner.SCRDRTreeLearner import SCRDRTreeLearner
 from Utility.Config import NUMBER_OF_PROCESSES, THRESHOLD
-from Utility.Utils import getWordTag, getRawText, readDictionary
 from Utility.LexiconCreator import createLexicon
+from Utility.Utils import getRawText, getWordTag, readDictionary
 
 
 def unwrap_self_RDRPOSTagger4Vn(arg, **kwarg):

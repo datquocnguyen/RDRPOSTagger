@@ -2,13 +2,13 @@
 
 import os
 import sys
+from multiprocessing import Pool
 
 os.chdir("../")
 sys.setrecursionlimit(100000)
 sys.path.append(os.path.abspath(""))
 os.chdir("./pSCRDRtagger")
 
-from multiprocessing import Pool
 from SCRDRlearner.Object import FWObject, getWordTag
 from SCRDRlearner.SCRDRTree import SCRDRTree
 from SCRDRlearner.SCRDRTreeLearner import SCRDRTreeLearner

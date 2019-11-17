@@ -2,20 +2,20 @@
 
 import os
 import sys
+from multiprocessing import Pool
 
 os.chdir("../")
 sys.setrecursionlimit(100000)
 sys.path.append(os.path.abspath(""))
 os.chdir("./pSCRDRtagger")
 
-from multiprocessing import Pool
 from InitialTagger.InitialTagger import initializeCorpus, initializeSentence
 from SCRDRlearner.Object import FWObject
 from SCRDRlearner.SCRDRTree import SCRDRTree
 from SCRDRlearner.SCRDRTreeLearner import SCRDRTreeLearner
 from Utility.Config import NUMBER_OF_PROCESSES, THRESHOLD
-from Utility.Utils import getWordTag, getRawText, readDictionary
 from Utility.LexiconCreator import createLexicon
+from Utility.Utils import getRawText, getWordTag, readDictionary
 
 
 def unwrap_self_RDRPOSTagger(arg, **kwarg):
@@ -31,6 +31,10 @@ class RDRPOSTagger(SCRDRTree):
         self.root = None
 
     def tagRawSentence(self, DICT, rawLine):
+        """
+        Tag words in a sentence with part-of-speech.
+        The sentence must be tokenized by a space.
+        """
         line = initializeSentence(DICT, rawLine)
         sen = []
         wordTags = line.split()
