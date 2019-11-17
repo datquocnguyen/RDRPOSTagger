@@ -3,23 +3,25 @@
 import os
 import sys
 
-from Utility.Utils import getWordTag, readDictionary
-
 os.chdir("../")
 sys.setrecursionlimit(100000)
 sys.path.append(os.path.abspath(""))
 os.chdir("./Utility")
 
+from Utility.Utils import getWordTag, readDictionary
+
 
 def computeAccuracy(goldStandardCorpus, taggedCorpus):
     tagged = open(taggedCorpus, "r").read().split()
     goldStandard = open(goldStandardCorpus, "r").read().split()
+
     if len(tagged) != len(goldStandard):
         print(
             "The numbers of word tokens in %s and %s are not equal!"
             % (goldStandardCorpus, taggedCorpus)
         )
         return 0
+
     numwords = 0
     count = 0
     for i in range(len(tagged)):
@@ -45,6 +47,7 @@ def computeAccuracies(fullDictFile, goldStandardCorpus, taggedCorpus):
     """
     tagged = open(taggedCorpus, "r").read().split()
     goldStandard = open(goldStandardCorpus, "r").read().split()
+
     if len(tagged) != len(goldStandard):
         print(
             "The numbers of word tokens in %s and %s are not equal!"

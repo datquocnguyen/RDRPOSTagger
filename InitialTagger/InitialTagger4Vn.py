@@ -20,7 +20,6 @@ def isVnUpperChar(char):
 
 
 def isAbbre(word):
-    # word = unicode(word, "utf-8")
     for i in range(len(word)):
         if isVnLowerChar(word[i]) or word[i] == "_":
             return False
@@ -28,7 +27,6 @@ def isAbbre(word):
 
 
 def isVnProperNoun(word):
-    # word = unicode(word, "utf-8")
     if isVnUpperChar(word[0]):
         if word.count("_") >= 4:
             return True
