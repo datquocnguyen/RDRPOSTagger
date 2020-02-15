@@ -2,10 +2,10 @@
 
 import os
 import sys
-os.chdir("../")
-sys.setrecursionlimit(100000)
-sys.path.append(os.path.abspath(""))
-os.chdir("./Utility")
+# os.chdir("../")
+# sys.setrecursionlimit(100000)
+# sys.path.append(os.path.abspath(""))
+# os.chdir("./Utility")
 
 import re
 from Utility.Utils import getWordTag
