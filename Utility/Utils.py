@@ -21,9 +21,9 @@ def getRawText(inputFile, outFile):
         out.write("\n")
     out.close()
     
-def readDictionary(inputFile):
+def readDictionary(inputFile, encoding='utf-8'):
     dictionary = {}
-    lines = open(inputFile, "r").readlines()
+    lines = open(inputFile, "r", encoding=encoding).readlines()
     for line in lines:
         wordtag = line.strip().split()
         dictionary[wordtag[0]] = wordtag[1]

@@ -30,13 +30,13 @@ class SCRDRTree:
         out.close()
     
     #Build tree from file containing rules using FWObject
-    def constructSCRDRtreeFromRDRfile(self, rulesFilePath):
+    def constructSCRDRtreeFromRDRfile(self, rulesFilePath, encoding='utf-8'):
         
         self.root = Node(FWObject(False), "NN", None, None, None, [], 0)
         currentNode = self.root
         currentDepth = 0
         
-        rulesFile = open(rulesFilePath, "r")
+        rulesFile = open(rulesFilePath, "r", encoding=encoding)
         lines = rulesFile.readlines()
         
         for i in range(1, len(lines)):

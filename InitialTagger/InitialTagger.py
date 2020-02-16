@@ -2,8 +2,13 @@
 
 import re
 
-def initializeSentence(FREQDICT, sentence):
-    words = sentence.strip().split()
+### added by zhaoyang
+import nltk
+### end of addition by zhaoyang
+
+def initializeSentence(FREQDICT, sentence, language='german'):
+    # words = sentence.strip().split()
+    words = nltk.word_tokenize(sentence, language=language)
     taggedSen = []
     for word in words:
         if word in ["“", "”", "\""]:
